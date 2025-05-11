@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import './App.css';
 
+
 function App() {
   const [url, setUrl] = useState('');
   const [shortUrls, setShortUrls] = useState([]);
   const [allUrls, setAllUrls] = useState([]);
+  const API_BASE = process.env.REACT_APP_API_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!url) return;
 
-    const response = await fetch('http://localhost:4000/url/', {
+    const response = await fetch(`${API_BASE}/url/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ url }),
@@ -18,9 +20,9 @@ function App() {
 
     const data = await response.json();
     const shortId = data.id;
-    const shortUrl = `http://localhost:4000/url/${shortId}`;
+    const shortUrl = `${API_BASE}/url/${shortId}`;
 
-    const clicksResponse = await fetch(`http://localhost:4000/url/analytics/${shortId}`);
+    const clicksResponse = await fetch(`${API_BASE}/url/analytics/${shortId}`);
     const clickData = await clicksResponse.json();
 
     setShortUrls(prev => [
@@ -36,7 +38,7 @@ function App() {
   };
 
   const handleShowAll = async () => {
-    const response = await fetch('http://localhost:4000/url/all');
+    const response = await fetch(`${API_BASE}/url/all`);
     const data = await response.json();
     setAllUrls(data);
   };
@@ -102,7 +104,7 @@ function App() {
               <tr key={index}>
                 <td>
                   <a
-                    href={`http://localhost:4000/url/${item.shortId}`}
+                    href={`${API_BASE}/url/${item.shortId}`}
                     target="_blank"
                     rel="noreferrer"
                   >
