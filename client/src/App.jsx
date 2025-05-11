@@ -7,6 +7,7 @@ function App() {
   const [shortUrls, setShortUrls] = useState([]);
   const [allUrls, setAllUrls] = useState([]);
   const API_BASE = process.env.REACT_APP_API_URL;
+  console.log("API_BASE", API_BASE);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
