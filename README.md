@@ -43,6 +43,23 @@ This app allows users to shorten long URLs and track click analytics — all wit
 For backend (`/server/.env`)  # MONGO_URL & PORT
 For frontend (`/client/.env`)  # API_URLS
 
+---
+📊 API Endpoints
+POST /url
+Creates a short URL from a given original URL.
+
+GET /url/shortId
+Redirects to the original URL.
+
+GET /url/analytics/shortId
+Returns the number of clicks for a short URL.
+
+GET /url/all
+Returns all stored URLs with click data.
+
+🧑‍💻 Author
+Made with ❤️ by Anup Sharma
+
 ## 🚀 Getting Started Locally
 
 ### 1. Clone the repository:
