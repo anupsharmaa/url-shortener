@@ -86,7 +86,7 @@ function App() {
     )}
 
     <div className="show-all">
-      <button onClick={handleShowAll}>Show All URLs</button>
+      <button onClick={handleShowAll} disabled>Show All URLs</button>
     </div>
 
     {allUrls.length > 0 && (
